@@ -1,0 +1,134 @@
+company_name,ticker,sector
+Reliance Industries,RELIANCE.NS,Energy
+Tata Consultancy Services,TCS.NS,IT
+HDFC Bank,HDFCBANK.NS,Banking
+Infosys,INFY.NS,IT
+ICICI Bank,ICICIBANK.NS,Banking
+Hindunilvr,HINDUNILVR.NS,FMCG
+Hindustan Unilever,HINDUNILVR.NS,FMCG
+State Bank of India,SBIN.NS,Banking
+SBI,SBIN.NS,Banking
+Bajaj Finance,BAJFINANCE.NS,Finance
+Bharti Airtel,BHARTIARTL.NS,Telecom
+Airtel,BHARTIARTL.NS,Telecom
+Kotak Mahindra Bank,KOTAKBANK.NS,Banking
+Kotak Bank,KOTAKBANK.NS,Banking
+Larsen and Toubro,LT.NS,Infrastructure
+L&T,LT.NS,Infrastructure
+Asian Paints,ASIANPAINT.NS,Consumer
+Axis Bank,AXISBANK.NS,Banking
+Maruti Suzuki,MARUTI.NS,Auto
+Maruti,MARUTI.NS,Auto
+Sun Pharmaceutical,SUNPHARMA.NS,Pharma
+Sun Pharma,SUNPHARMA.NS,Pharma
+ITC,ITC.NS,FMCG
+Titan Company,TITAN.NS,Consumer
+Titan,TITAN.NS,Consumer
+Wipro,WIPRO.NS,IT
+Ultratech Cement,ULTRACEMCO.NS,Cement
+UltraTech,ULTRACEMCO.NS,Cement
+HCL Technologies,HCLTECH.NS,IT
+HCL Tech,HCLTECH.NS,IT
+Tech Mahindra,TECHM.NS,IT
+Nestle India,NESTLEIND.NS,FMCG
+Nestle,NESTLEIND.NS,FMCG
+Power Grid,POWERGRID.NS,Power
+NTPC,NTPC.NS,Power
+Tata Motors,TATAMOTORS.NS,Auto
+Bajaj Auto,BAJAJ-AUTO.NS,Auto
+Dr Reddys Laboratories,DRREDDY.NS,Pharma
+Dr Reddys,DRREDDY.NS,Pharma
+Cipla,CIPLA.NS,Pharma
+Divi Laboratories,DIVISLAB.NS,Pharma
+Divis Lab,DIVISLAB.NS,Pharma
+Grasim Industries,GRASIM.NS,Cement
+JSW Steel,JSWSTEEL.NS,Metals
+Tata Steel,TATASTEEL.NS,Metals
+Eicher Motors,EICHERMOT.NS,Auto
+Royal Enfield,EICHERMOT.NS,Auto
+Hindalco Industries,HINDALCO.NS,Metals
+Hindalco,HINDALCO.NS,Metals
+Adani Ports,ADANIPORTS.NS,Infrastructure
+Adani Enterprises,ADANIENT.NS,Conglomerate
+Adani Green Energy,ADANIGREEN.NS,Energy
+Apollo Hospitals,APOLLOHOSP.NS,Healthcare
+IndusInd Bank,INDUSINDBK.NS,Banking
+Bajaj Finserv,BAJAJFINSV.NS,Finance
+ONGC,ONGC.NS,Energy
+Oil and Natural Gas,ONGC.NS,Energy
+Coal India,COALINDIA.NS,Energy
+Hero MotoCorp,HEROMOTOCO.NS,Auto
+Britannia,BRITANNIA.NS,FMCG
+Shree Cement,SHREECEM.NS,Cement
+Tata Consumer Products,TATACONSUM.NS,FMCG
+Vedanta,VEDL.NS,Metals
+Torrent Pharma,TORNTPHARM.NS,Pharma
+Pidilite Industries,PIDILITIND.NS,Consumer
+Zydus Lifesciences,ZYDUSLIFE.NS,Pharma
+Zydus,ZYDUSLIFE.NS,Pharma
+Havells India,HAVELLS.NS,Consumer Durables
+Havells,HAVELLS.NS,Consumer Durables
+Marico,MARICO.NS,FMCG
+Godrej Consumer Products,GODREJCP.NS,FMCG
+Godrej,GODREJCP.NS,FMCG
+Muthoot Finance,MUTHOOTFIN.NS,Finance
+Bosch India,BOSCHLTD.NS,Auto Ancillary
+Bosch,BOSCHLTD.NS,Auto Ancillary
+Siemens India,SIEMENS.NS,Industrial
+Siemens,SIEMENS.NS,Industrial
+ABB India,ABB.NS,Industrial
+ABB,ABB.NS,Industrial
+Tata Power,TATAPOWER.NS,Power
+IRCTC,IRCTC.NS,Travel
+Indian Railway Catering,IRCTC.NS,Travel
+InterGlobe Aviation,INDIGO.NS,Aviation
+IndiGo,INDIGO.NS,Aviation
+Dmart,DMART.NS,Retail
+Avenue Supermarts,DMART.NS,Retail
+Zomato,ZOMATO.NS,Consumer Tech
+Paytm,PAYTM.NS,Fintech
+Info Edge,NAUKRI.NS,Internet
+Naukri,NAUKRI.NS,Internet
+FSN Ecommerce,NYKAA.NS,Beauty
+Nykaa,NYKAA.NS,Beauty
+Policybazaar,POLICYBZR.NS,Insurance
+PB Fintech,POLICYBZR.NS,Insurance
+Bikaji Foods,BIKAJI.NS,FMCG
+Dixon Technologies,DIXON.NS,Electronics
+Amber Enterprises,AMBER.NS,Electronics
+Bharat Forge,BHARATFORG.NS,Auto Ancillary
+Motherson Sumi,MOTHERSUMI.NS,Auto Ancillary
+Exide Industries,EXIDEIND.NS,Auto Ancillary
+Exide,EXIDEIND.NS,Auto Ancillary
+Cummins India,CUMMINSIND.NS,Industrial
+Voltas,VOLTAS.NS,Consumer Durables
+Whirlpool India,WHIRLPOOL.NS,Consumer Durables
+Page Industries,PAGEIND.NS,Apparel
+Jockey,PAGEIND.NS,Apparel
+Colgate Palmolive India,COLPAL.NS,FMCG
+Colgate,COLPAL.NS,FMCG
+Dabur,DABUR.NS,FMCG
+Emami,EMAMILTD.NS,FMCG
+United Breweries,UBL.NS,FMCG
+Kingfisher,UBL.NS,FMCG
+United Spirits,MCDOWELL-N.NS,FMCG
+McDowell,MCDOWELL-N.NS,FMCG
+Aurobindo Pharma,AUROPHARMA.NS,Pharma
+Ipca Laboratories,IPCALAB.NS,Pharma
+Ipca,IPCALAB.NS,Pharma
+Alkem Laboratories,ALKEM.NS,Pharma
+Alkem,ALKEM.NS,Pharma
+Biocon,BIOCON.NS,Pharma
+Syngene International,SYNGENE.NS,Pharma
+Syngene,SYNGENE.NS,Pharma
+SRF,SRF.NS,Chemicals
+Navin Fluorine,NAVINFLUOR.NS,Chemicals
+PI Industries,PIIND.NS,Chemicals
+Aarti Industries,AARTIIND.NS,Chemicals
+Deepak Nitrite,DEEPAKNTR.NS,Chemicals
+Tata Chemicals,TATACHEM.NS,Chemicals
+NIFTY 50,^NSEI,Index
+Sensex,^BSESN,Index
+NIFTY Bank,^NSEBANK,Index
+Bank Nifty,^NSEBANK,Index
+NIFTY IT,NIFTYIT.NS,Index
