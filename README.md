@@ -3,8 +3,17 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.32+-red.svg)](https://streamlit.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Live Demo](https://img.shields.io/badge/Try%20Live-Streamlit%20Cloud-green.svg)](https://valueatrisk-de2ry8igh5xr7f6qhlcjgp.streamlit.app/)
 
 A professional-grade **Streamlit web application** for Value at Risk (VaR) analysis of NSE-listed Indian stocks. Combines three quantitative methodologies (Historical Simulation, GARCH Parametric, Monte Carlo), statistical backtesting, and interactive visualization.
+
+---
+
+## 🌐 Try Live Demo
+
+**[👉 Click here to access the live application](https://valueatrisk-de2ry8igh5xr7f6qhlcjgp.streamlit.app/)**
+
+No installation required! Analyze any NSE stock in seconds.
 
 ---
 
