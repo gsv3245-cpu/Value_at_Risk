@@ -47,75 +47,85 @@ from plots import (
 
 st.markdown("""
 <style>
-  /* Header gradient */
+  /* Header gradient - enhanced visibility */
   .main-header {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      background: linear-gradient(135deg, #0f2c5c 0%, #164a7e 50%, #1e5ba8 100%);
       padding: 2rem 2.5rem 1.5rem;
       border-radius: 12px;
       margin-bottom: 1.5rem;
-      color: white;
+      color: #ffffff;
   }
-  .main-header h1 { font-size: 2.2rem; font-weight: 700; margin:0; }
-  .main-header p  { opacity: 0.8; margin: 0.3rem 0 0; font-size: 1rem; }
+  .main-header h1 { font-size: 2.2rem; font-weight: 700; margin:0; color: #ffffff; }
+  .main-header p  { opacity: 0.95; margin: 0.3rem 0 0; font-size: 1rem; color: #e8f0ff; }
 
-  /* Metric cards */
+  /* Metric cards - improved contrast */
   .metric-card {
-      background: #f8f9fa;
+      background: #f8fbfd;
       border-left: 4px solid #1f77b4;
       border-radius: 8px;
       padding: 1rem 1.2rem;
       margin: 0.4rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
-  .metric-card.danger  { border-left-color: #e74c3c; }
-  .metric-card.warning { border-left-color: #f39c12; }
-  .metric-card.success { border-left-color: #27ae60; }
-  .metric-card.purple  { border-left-color: #9b59b6; }
+  .metric-card.danger  { border-left-color: #d32f2f; background: #fff3e0; }
+  .metric-card.warning { border-left-color: #f57c00; background: #fff8e1; }
+  .metric-card.success { border-left-color: #388e3c; background: #f1f8e9; }
+  .metric-card.purple  { border-left-color: #7b1fa2; background: #f3e5f5; }
 
-  .metric-label { font-size: 0.75rem; color: #666; font-weight: 600;
+  .metric-label { font-size: 0.75rem; color: #455a64; font-weight: 700;
                   text-transform: uppercase; letter-spacing: 0.5px; }
-  .metric-value { font-size: 1.5rem; font-weight: 700; color: #2c3e50; }
-  .metric-sub   { font-size: 0.8rem; color: #888; }
+  .metric-value { font-size: 1.5rem; font-weight: 700; color: #1a237e; }
+  .metric-sub   { font-size: 0.8rem; color: #546e7a; font-weight: 500; }
 
-  /* Section headers */
+  /* Section headers - darker for visibility */
   .section-header {
       font-size: 1.15rem; font-weight: 700;
-      color: #2c3e50; border-bottom: 2px solid #e0e0e0;
+      color: #0d47a1; border-bottom: 3px solid #1976d2;
       padding-bottom: 0.4rem; margin: 1.5rem 0 1rem;
   }
 
-  /* Verdict box */
+  /* Verdict box - enhanced colors */
   .verdict-pass {
-      background: #d4edda; border: 1px solid #28a745;
-      border-radius: 8px; padding: 1rem; color: #155724;
+      background: #c8e6c9; border: 2px solid #2e7d32;
+      border-radius: 8px; padding: 1rem; color: #1b5e20; font-weight: 600;
   }
   .verdict-fail {
-      background: #f8d7da; border: 1px solid #dc3545;
-      border-radius: 8px; padding: 1rem; color: #721c24;
+      background: #ffcdd2; border: 2px solid #c62828;
+      border-radius: 8px; padding: 1rem; color: #b71c1c; font-weight: 600;
   }
 
-  /* Formula box */
+  /* Formula box - better visibility */
   .formula-box {
-      background: #f0f4f8; border-radius: 8px;
+      background: #e3f2fd; border-radius: 8px;
       padding: 0.8rem 1.2rem; font-family: monospace;
-      font-size: 0.85rem; color: #2c3e50;
-      border-left: 3px solid #1f77b4;
+      font-size: 0.85rem; color: #0d47a1;
+      border-left: 4px solid #1565c0; font-weight: 500;
   }
 
-  /* Tag badges */
+  /* Tag badges - improved contrast */
   .badge {
-      display: inline-block; padding: 2px 8px;
+      display: inline-block; padding: 3px 10px;
       border-radius: 12px; font-size: 0.72rem;
-      font-weight: 600; margin: 1px;
+      font-weight: 700; margin: 2px;
   }
-  .badge-blue   { background:#dbeafe; color:#1d4ed8; }
-  .badge-green  { background:#dcfce7; color:#166534; }
-  .badge-red    { background:#fee2e2; color:#991b1b; }
-  .badge-orange { background:#ffedd5; color:#9a3412; }
+  .badge-blue   { background:#1565c0; color:#ffffff; }
+  .badge-green  { background:#2e7d32; color:#ffffff; }
+  .badge-red    { background:#c62828; color:#ffffff; }
+  .badge-orange { background:#e65100; color:#ffffff; }
 
-  /* Sidebar */
+  /* Sidebar - improved visibility */
   section[data-testid="stSidebar"] {
-      background: #f0f4f8;
+      background: #e8f4f8;
   }
+
+  /* Info/Alert boxes */
+  .info-box {
+      background: #e1f5fe; border-left: 4px solid #0277bd;
+      border-radius: 6px; padding: 1rem; color: #01579b;
+  }
+
+  /* Better text visibility overall */
+  .stMarkdown { color: #263238; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -155,23 +165,33 @@ with st.sidebar:
 
     # Stock search
     st.markdown("### 🔍 Stock Search")
+    
     stock_query = st.text_input(
-        "Enter company name",
-        placeholder="e.g. Reliance, HDFC Bank, Infosys...",
-        help="Type any NSE-listed company name. Fuzzy matching will find the ticker."
+        "Search stocks",
+        placeholder="Enter any NSE stock name or ticker (e.g., Reliance, INFY, ADANIPORTS)...",
+        help="Search any stock listed on NSE by company name or ticker symbol"
     )
 
     selected_ticker  = None
     selected_company = None
 
+    # Get search results only if user types something
     if stock_query and len(stock_query) >= 2:
-        results = search_companies(stock_query, top_n=6)
+        results = search_companies(stock_query)
+        result_label = f"🔎 Found {len(results)} match(es)"
+        
         if results:
+            # Sort by score (relevance)
+            results = sorted(results, key=lambda x: -x.get("score", 0))
+            
             options = {
                 f"{r['company_name']}  [{r['ticker']}]  — {r['sector']}": r
                 for r in results
             }
-            chosen = st.selectbox("Select company", list(options.keys()))
+            
+            st.markdown(f'<small style="color:#666;">{result_label}</small>', unsafe_allow_html=True)
+            chosen = st.selectbox("Select company", list(options.keys()), label_visibility="collapsed", key="stock_select")
+            
             if chosen:
                 selected_ticker  = options[chosen]["ticker"]
                 selected_company = options[chosen]["company_name"]
@@ -180,7 +200,10 @@ with st.sidebar:
                 <span class="badge badge-green">{options[chosen]['sector']}</span>
                 """, unsafe_allow_html=True)
         else:
-            st.warning("No matches found. Try a different name.")
+            st.warning("⚠️ No matches found. Try a different name or ticker.")
+    else:
+        if stock_query:  # User typed something but less than 2 chars
+            st.caption("Type at least 2 characters to search...")
 
     st.markdown("---")
     st.markdown("### 💰 Investment Settings")
@@ -269,9 +292,16 @@ if not run_btn:
         <div style="font-size:4rem;">📈</div>
         <h2 style="color:#2c3e50;">Welcome to IndiaVaR</h2>
         <p style="max-width:600px; margin:auto; font-size:1.05rem;">
-            Type any NSE-listed company name in the sidebar, set your investment
+            Type any NSE-listed company name or ticker symbol in the sidebar, set your investment
             parameters, and click <b>Run Analysis</b> to get a complete risk report.
         </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="info-box" style="margin-bottom:1.5rem;">
+        <b>💡 Quick Tip:</b> Search by <b>company name</b> (e.g., "Reliance", "TCS") or 
+        <b>NSE ticker</b> (e.g., "WIPRO.NS", "INFY", "ZOMATO"). Works with any NSE-listed stock!
     </div>
     """, unsafe_allow_html=True)
 
@@ -392,6 +422,23 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 with tab1:
     st.markdown(f'<div class="section-header">1-Day VaR Summary — {confidence:.0%} Confidence | ₹{investment:,.0f} Invested</div>', unsafe_allow_html=True)
 
+    # SIMPLE EXPLANATION
+    with st.expander("❓ What does this mean in simple terms?"):
+        st.markdown("""
+        **VaR (Value at Risk) answers this question:** "What's the maximum amount of money I could lose tomorrow (or in the next X days) with reasonable confidence?"
+        
+        **Example:** If you invest ₹100,000 and the VaR says ₹5,000...
+        - This means there's a 95% chance your loss won't exceed ₹5,000 in one day
+        - There's a 5% chance you could lose more than ₹5,000 (in a bad market day)
+        
+        **The 3 methods we use:**
+        1. **Historical:** Based on what actually happened in the past
+        2. **Parametric:** Uses math to estimate based on normal patterns
+        3. **Monte Carlo:** Simulates 10,000 imaginary market scenarios
+        
+        We show all three because they each give a slightly different perspective.
+        """)
+
     # Three method columns
     col1, col2, col3 = st.columns(3)
     methods_display = [
@@ -415,7 +462,11 @@ with tab1:
                             f"₹{res['var_inr']:,.0f}",
                             f"Scaled by √{horizon}", "warning")
 
+    # CVaR Explanation
     st.markdown("---")
+    st.markdown("""
+    💡 **What's CVaR?** It's the average loss if things go REALLY bad. If VaR is your "worst normal day" loss, CVaR is your "absolute worst case" average loss. It's more serious than VaR.
+    """)
 
     # Comparison chart
     st.plotly_chart(var_comparison_chart(var_95, var_99, investment), use_container_width=True)
@@ -460,7 +511,28 @@ with tab1:
 with tab2:
     st.markdown('<div class="section-header">Kupiec (1995) Proportion of Failures (POF) Backtest</div>', unsafe_allow_html=True)
 
-    with st.expander("📖 What is the Kupiec POF Test?"):
+    # SIMPLE EXPLANATION FIRST
+    with st.expander("❓ What does this simple test tell us?"):
+        st.markdown("""
+        **Is our VaR prediction accurate?** This test checks!
+        
+        🎯 **Here's how it works:**
+        - We said "You'll lose more than VaR only 5% of the time" (if 95% confidence)
+        - We look at actual history and count: How many times did you actually lose MORE than predicted?
+        - If it's close to 5%, our model is **GOOD** ✅
+        - If it's way off (like 15%), our model is **WRONG** ❌
+        
+        **Think of it like checking a weather forecast:**
+        - Forecast says "90% chance of rain" (only 10% chance it stays dry)
+        - Look at 100 days with that forecast
+        - If it actually stayed dry on ~10 days → Forecast is accurate
+        - If it stayed dry on 30 days → Weather forecast is unreliable
+        
+        **PASS = Your VaR model is working correctly**
+        **FAIL = Your VaR model underestimated risk (or was too conservative)**
+        """)
+
+    with st.expander("📖 Technical: Kupiec POF Test"):
         st.markdown(f"""
         The Kupiec test checks whether the frequency of VaR breaches is statistically
         consistent with the confidence level using a **log-likelihood ratio test**.
@@ -516,18 +588,44 @@ with tab2:
 with tab3:
     st.markdown('<div class="section-header">Rolling VaR & Volatility — Key Indian Market Events Annotated</div>', unsafe_allow_html=True)
 
+    # SIMPLE EXPLANATION
+    with st.expander("❓ What am I looking at here?"):
+        st.markdown("""
+        **This shows how RISKY this stock has been over time.**
+        
+        📊 **What the chart shows:**
+        - **High peaks** = Stock was very risky during those periods (big price swings)
+        - **Low valleys** = Stock was calm and stable during those periods (small price swings)
+        - **Vertical lines** = Major market events that shocked the market
+        
+        🎯 **Why this matters:**
+        - If your stock spiked in risk during crises, it means it moves DOWN when the market panics
+        - This is bad because you lose money exactly when you need it most
+        - If your stock stayed calm, it's a safer choice that doesn't amplify market crashes
+        
+        💡 **Pattern you might see:**
+        - Risk spikes during COVID crash (2020), Global Financial Crisis (2008-09)
+        - Small drops during normal times
+        - This is called **"volatility clustering"** — bad news brings more bad news
+        """)
+
     st.info("Rolling 252-day window shows how risk evolved. Peaks correspond to market crises — demonstrating **volatility clustering** documented in Indian market GARCH studies (Srinivasan, 2010; PMC 2022).")
 
     st.plotly_chart(rolling_var_chart(roll_var, selected_company, investment), use_container_width=True)
     st.plotly_chart(rolling_volatility_chart(roll_vol, selected_company), use_container_width=True)
 
     # Rolling VaR stats
-    st.markdown("**Rolling VaR Statistics:**")
+    st.markdown("---")
+    st.markdown("**Rolling VaR Statistics — What These Numbers Mean:**")
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Current VaR", f"₹{roll_var['VaR_INR'].iloc[-1]:,.0f}")
-    col2.metric("Peak VaR (worst day)", f"₹{roll_var['VaR_INR'].max():,.0f}")
-    col3.metric("Min VaR (calmest)", f"₹{roll_var['VaR_INR'].min():,.0f}")
-    col4.metric("Avg VaR over period", f"₹{roll_var['VaR_INR'].mean():,.0f}")
+    col1.metric("Current VaR", f"₹{roll_var['VaR_INR'].iloc[-1]:,.0f}", 
+                help="Risk level RIGHT NOW")
+    col2.metric("Peak VaR (worst day)", f"₹{roll_var['VaR_INR'].max():,.0f}",
+                help="Riskiest period in past") 
+    col3.metric("Min VaR (calmest)", f"₹{roll_var['VaR_INR'].min():,.0f}",
+                help="Most stable period")
+    col4.metric("Avg VaR over period", f"₹{roll_var['VaR_INR'].mean():,.0f}",
+                help="Average typical risk")
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -536,19 +634,54 @@ with tab3:
 with tab4:
     st.markdown('<div class="section-header">Indian Market Stress Test Scenarios</div>', unsafe_allow_html=True)
 
+    # SIMPLE EXPLANATION
+    with st.expander("❓ What are these 'stress tests'?"):
+        st.markdown("""
+        **Asking: What if a MAJOR market crash happens?**
+        
+        We take 7 real market disasters that happened in India and ask:
+        "If THAT same crash happened TODAY, how much would my investment lose?"
+        
+        🚨 **Real crises we test:**
+        1. **COVID-19 Crash (2020)** — Market fell ~40% in weeks
+        2. **Global Financial Crisis (2008)** — Worst recession in 80 years
+        3. **IL&FS Crisis (2018)** — Major Indian finance company defaulted
+        4. **Adani Crisis (2023)** — Conglomerate faced allegations
+        5. **Rupee Devaluation** — When ₹ loses value against $
+        6. **Oil Price Shock** — Major energy crisis
+        7. **Bank Run Scenario** — When people panic withdraw money
+        
+        📊 **What to expect:**
+        - You see ₹ amounts you'd LOSE in each scenario
+        - Compare how your stock performs vs market in each crisis
+        - More sensitive = Higher losses = Riskier stock
+        
+        ⚠️ **Important:** These are based on PAST crashes, not predictions!
+        Future crashes could be different, bigger, or smaller.
+        """)
+
     st.warning("⚠️ Stress tests apply historical Indian market crisis shocks to your current investment. These are scenario-based estimates, not probability-weighted forecasts.")
 
     st.plotly_chart(stress_test_chart(stress_df, investment), use_container_width=True)
 
     # Worst drawdown from actual history
     st.markdown("---")
-    st.markdown('<div class="section-header">📉 Actual Historical Drawdown for This Stock</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">📉 The Worst Actual Loss This Stock Has Ever Suffered</div>', unsafe_allow_html=True)
+    
+    st.markdown("""
+    **Historical Maximum Drawdown:** This is the biggest decline from peak to bottom that 
+    this stock has experienced in the past. If it happened once, it could happen again!
+    """)
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Max Drawdown", f"{dd_info['max_drawdown_pct']:.1f}%")
-    col2.metric("Peak Date", str(dd_info['peak_date'].date()) if hasattr(dd_info['peak_date'], 'date') else str(dd_info['peak_date'])[:10])
-    col3.metric("Trough Date", str(dd_info['trough_date'].date()) if hasattr(dd_info['trough_date'], 'date') else str(dd_info['trough_date'])[:10])
-    col4.metric("Max Loss (₹)", f"₹{abs(dd_info['max_drawdown_pct']/100 * investment):,.0f}")
+    col1.metric("Max Drawdown", f"{dd_info['max_drawdown_pct']:.1f}%",
+                help="Biggest % decline ever")
+    col2.metric("Peak Date", str(dd_info['peak_date'].date()) if hasattr(dd_info['peak_date'], 'date') else str(dd_info['peak_date'])[:10],
+                help="When stock was at highest")
+    col3.metric("Trough Date", str(dd_info['trough_date'].date()) if hasattr(dd_info['trough_date'], 'date') else str(dd_info['trough_date'])[:10],
+                help="When stock hit lowest point")
+    col4.metric("Max Loss (₹)", f"₹{abs(dd_info['max_drawdown_pct']/100 * investment):,.0f}",
+                help="How much ₹ you'd lose in worst case")
 
     # Stress table
     st.markdown("---")
@@ -567,44 +700,86 @@ with tab4:
 with tab5:
     st.markdown('<div class="section-header">📋 Risk Report Card</div>', unsafe_allow_html=True)
 
+    # SIMPLE EXPLANATION
+    with st.expander("❓ What do all these metrics mean?"):
+        st.markdown("""
+        **Think of this as a report card for your stock's performance and risk:**
+        
+        📈 **Return**: Is the stock making money?
+        💨 **Volatility**: Does the stock price bounce around a lot?
+        ⭐ **Sharpe Ratio**: Are you getting rewarded enough for the risk you're taking?
+        🎯 **Sortino Ratio**: Like Sharpe, but only looks at BAD volatility (downside)
+        📉 **Max Drawdown**: Worst loss experienced ever
+        📊 **Beta**: Does this stock rise/fall more or less than the market?
+        
+        **Simple grades:**
+        - **Sharpe > 2.0** = Excellent (great money for risk taken)
+        - **Sharpe 1.0-2.0** = Good (decent reward for risk)
+        - **Sharpe < 1.0** = Poor (not worth the risk)
+        - **Beta = 1.0** = Moves with market
+        - **Beta > 1.0** = More risky (amplifies market moves)
+        - **Beta < 1.0** = Less risky (dampens market moves)
+        """)
+
     col1, col2 = st.columns(2)
 
     with col1:
-        st.markdown("**Performance Metrics**")
+        st.markdown("**Performance Metrics** (Is it making money?)")
         metric_card("Annualised Return",
                     f"{metrics['annualised_return']:.2%}",
-                    "Compound annual return", "success" if metrics['annualised_return'] > 0 else "danger")
+                    "Average yearly profit/loss", "success" if metrics['annualised_return'] > 0 else "danger")
         metric_card("Annualised Volatility",
                     f"{metrics['annualised_volatility']:.2%}",
-                    "σ × √252 (historical)", "warning")
+                    "How bumpy the ride (yearly)", "warning")
+        
+        st.markdown("---")
+        st.markdown("**Risk Quality** (Are you being paid for taking risk?)")
         metric_card("Sharpe Ratio",
                     f"{metrics['sharpe_ratio']:.2f}",
-                    "RFR = 6.5% (RBI repo rate proxy)", "success" if metrics['sharpe_ratio'] > 1 else "warning")
+                    "Return vs Risk (higher = better)", "success" if metrics['sharpe_ratio'] > 1 else "warning")
         metric_card("Sortino Ratio",
                     f"{metrics['sortino_ratio']:.2f}" if not np.isnan(metrics['sortino_ratio']) else "N/A",
-                    "Downside risk-adjusted return", "success" if (not np.isnan(metrics['sortino_ratio']) and metrics['sortino_ratio'] > 1) else "warning")
+                    "Return vs Bad Volatility only", "success" if (not np.isnan(metrics['sortino_ratio']) and metrics['sortino_ratio'] > 1) else "warning")
         metric_card("Max Drawdown",
                     f"{metrics['max_drawdown_pct']:.1f}%",
-                    "Peak-to-trough decline", "danger")
+                    "Worst loss ever", "danger")
 
     with col2:
-        st.markdown("**Market & Distribution Metrics**")
+        st.markdown("**Comparison to Market** (How risky vs Nifty 50?)")
         beta_val = metrics.get("beta", np.nan)
         beta_str = f"{beta_val:.2f}" if not np.isnan(beta_val) else "N/A"
+        
+        if not np.isnan(beta_val):
+            if beta_val > 1.2:
+                beta_desc = "Much riskier than market (amplifies ups AND downs)"
+                beta_style = "danger"
+            elif beta_val > 0.8:
+                beta_desc = "Moves with market (similar risk)"
+                beta_style = "warning"
+            else:
+                beta_desc = "Safer than market (dampens market swings)"
+                beta_style = "success"
+        else:
+            beta_desc = "Not calculated"
+            beta_style = ""
+            
         metric_card("Beta vs Nifty 50", beta_str,
-                    "Market sensitivity (1.0 = market)", "warning")
+                    beta_desc, beta_style)
+        
+        st.markdown("---")
+        st.markdown("**Distribution Shape** (Are returns 'normal' or 'weird'?)")
         metric_card("Skewness",
                     f"{metrics['skewness']:.3f}",
-                    "Negative = left-tail risk (typical for stocks)", "warning")
+                    "Negative = More likely to crash than soar", "warning")
         metric_card("Excess Kurtosis",
                     f"{metrics['excess_kurtosis']:.3f}",
-                    "Fat tails if > 0 (common in Indian markets)", "danger" if metrics['excess_kurtosis'] > 1 else "")
-        metric_card("Jarque-Bera Normality",
-                    "Not Normal ❌" if not metrics['is_normal_jb'] else "Normal ✅",
-                    f"p = {metrics['jb_p_value']:.4f}", "danger" if not metrics['is_normal_jb'] else "success")
-        metric_card("Observations",
+                    "Fat tails = Extreme events (crashes/rallies) more common", "danger" if metrics['excess_kurtosis'] > 1 else "")
+        metric_card("Is Normal Distribution?",
+                    "❌ NOT Normal" if not metrics['is_normal_jb'] else "✅ Normal", 
+                    "Normal = Predictable. Not Normal = Surprises likely!", "danger" if not metrics['is_normal_jb'] else "success")
+        metric_card("Data Points",
                     f"{metrics['n_obs']:,}" if 'n_obs' in metrics else str(len(returns)),
-                    f"{data_years} years of daily data", "")
+                    f"Daily observations over {data_years} years", "")
 
     st.markdown("---")
 

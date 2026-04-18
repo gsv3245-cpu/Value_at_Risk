@@ -23,22 +23,81 @@ def _load_ticker_map() -> pd.DataFrame:
 _TICKER_DF = _load_ticker_map()
 
 
-def search_companies(query: str, top_n: int = 8) -> list[dict]:
+def _validate_ticker(ticker: str) -> tuple[bool, dict | None]:
     """
-    Fuzzy-search company names.
-    Returns list of dicts: {company_name, ticker, sector, score}
+    Validate if a ticker exists by attempting to fetch data from yfinance.
+    Returns (is_valid, info_dict)
+    """
+    try:
+        ticker_clean = ticker.strip().upper()
+        # Ensure it has .NS suffix for NSE
+        if not ticker_clean.endswith(".NS"):
+            ticker_clean = f"{ticker_clean}.NS"
+        
+        # Try to fetch 1 day of data
+        test_data = yf.download(
+            ticker_clean,
+            period="1d",
+            progress=False,
+            auto_adjust=True
+        )
+        
+        if test_data.empty or len(test_data) == 0:
+            return False, None
+        
+        # Get company info
+        try:
+            yf_info = yf.Ticker(ticker_clean).info
+            info = {
+                "company_name": yf_info.get("longName", ticker_clean),
+                "ticker": ticker_clean,
+                "sector": yf_info.get("sector", "Unknown"),
+                "score": 100,  # Direct ticker match = perfect score
+                "is_direct_match": True,
+            }
+        except:
+            info = {
+                "company_name": ticker_clean,
+                "ticker": ticker_clean,
+                "sector": "Unknown",
+                "score": 100,
+                "is_direct_match": True,
+            }
+        
+        return True, info
+    except Exception:
+        return False, None
+
+
+def search_companies(query: str, top_n: int = None) -> list[dict]:
+    """
+    Fuzzy-search company names OR validate direct ticker input.
+    Returns list of dicts: {company_name, ticker, sector, score, is_direct_match}
+    
+    - Fuzzy matches company names from CSV
+    - Also checks if query is a valid NSE ticker symbol
+    - If top_n is None, returns ALL matches
     """
     if not query or len(query) < 2:
         return []
 
-    query_lower = query.lower().strip()
+    query_clean = query.strip()
+    
+    # Check if user typed a ticker symbol (has .NS or is uppercase letters/numbers)
+    if query_clean.isupper() or ".NS" in query_clean.upper():
+        is_valid, info = _validate_ticker(query_clean)
+        if is_valid and info:
+            return [info]  # Return direct match first
+    
+    # Fall back to fuzzy search in CSV
+    query_lower = query_clean.lower().strip()
     names = _TICKER_DF["company_name_lower"].tolist()
 
     results = process.extract(
         query_lower,
         names,
         scorer=fuzz.WRatio,
-        limit=top_n
+        limit=top_n if top_n else len(names)  # None = all results
     )
 
     output = []
@@ -55,6 +114,7 @@ def search_companies(query: str, top_n: int = 8) -> list[dict]:
             "ticker": row["ticker"],
             "sector": row["sector"],
             "score": score,
+            "is_direct_match": False,
         })
 
     return output

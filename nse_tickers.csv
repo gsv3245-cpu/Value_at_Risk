@@ -22,6 +22,7 @@ Maruti,MARUTI.NS,Auto
 Sun Pharmaceutical,SUNPHARMA.NS,Pharma
 Sun Pharma,SUNPHARMA.NS,Pharma
 ITC,ITC.NS,FMCG
+ITC Limited,ITC.NS,FMCG
 Titan Company,TITAN.NS,Consumer
 Titan,TITAN.NS,Consumer
 Wipro,WIPRO.NS,IT
@@ -34,6 +35,7 @@ Nestle India,NESTLEIND.NS,FMCG
 Nestle,NESTLEIND.NS,FMCG
 Power Grid,POWERGRID.NS,Power
 NTPC,NTPC.NS,Power
+NTPC Limited,NTPC.NS,Power
 Tata Motors,TATAMOTORS.NS,Auto
 Bajaj Auto,BAJAJ-AUTO.NS,Auto
 Dr Reddys Laboratories,DRREDDY.NS,Pharma
@@ -121,6 +123,7 @@ Alkem,ALKEM.NS,Pharma
 Biocon,BIOCON.NS,Pharma
 Syngene International,SYNGENE.NS,Pharma
 Syngene,SYNGENE.NS,Pharma
+SRF Limited,SRF.NS,Chemicals
 SRF,SRF.NS,Chemicals
 Navin Fluorine,NAVINFLUOR.NS,Chemicals
 PI Industries,PIIND.NS,Chemicals
